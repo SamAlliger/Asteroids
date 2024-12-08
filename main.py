@@ -5,6 +5,7 @@ import pygame
 from constants import *
 from player import *
 from asteroids import *
+from asteroidfield import *
 
 def main():
     pygame.init
@@ -28,9 +29,13 @@ def main():
     # Assigning groups
     Player.containers = (updateable, drawable)
     Asteroids.containers = (asteroids, updateable, drawable)
+    AsteroidField.containers = (updateable)
 
     # Initialize player in the middle of the screen
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+
+    #Initialize AsteroidField
+    asteroidField = AsteroidField()
 
     # Infinte game loop
     while True:
@@ -45,7 +50,7 @@ def main():
             x.update(dt)
         # Drawing at new positions
         for y in drawable:
-            x.draw(screen)
+            y.draw(screen)
         # Refresh screen, wait on clock, setting FPS limit
         pygame.display.flip()
         dt = clock.tick(60) / 1000

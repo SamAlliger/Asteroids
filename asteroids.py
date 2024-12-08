@@ -3,7 +3,7 @@ from circleshape import *
 class Asteroids(CircleShape):
     # Create Asteroids
     def __init__(self, x, y, radius):
-        super().__init__(self, x, y, radius)
+        super().__init__(x, y, radius)
 
     # Draw Asteroid on screen
     def draw(self, screen):
