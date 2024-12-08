@@ -19,6 +19,13 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Creating groups for more structured calling
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # Assigning groups
+    Player.containers = (updateable, drawable)
+
     # Initialize player in the middle of the screen
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
@@ -30,9 +37,12 @@ def main():
                 return
         # Black background
         screen.fill(color="black", rect=None, special_flags=0)
-        # Player character
-        player.update(dt)
-        player.draw(screen)
+        # Updating positions
+        for x in updateable:
+            x.update(dt)
+        # Drawing at new positions
+        for y in drawable:
+            x.draw(screen)
         # Refresh screen, wait on clock, setting FPS limit
         pygame.display.flip()
         dt = clock.tick(60) / 1000
