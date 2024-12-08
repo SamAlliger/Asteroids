@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroids import *
@@ -46,11 +47,15 @@ def main():
         # Black background
         screen.fill(color="black", rect=None, special_flags=0)
         # Updating positions
-        for x in updateable:
-            x.update(dt)
+        for u in updateable:
+            u.update(dt)
+        for a in asteroids:
+            if a.check_collision(player):
+                print("Game over!")
+                sys.exit()
         # Drawing at new positions
-        for y in drawable:
-            y.draw(screen)
+        for d in drawable:
+            d.draw(screen)
         # Refresh screen, wait on clock, setting FPS limit
         pygame.display.flip()
         dt = clock.tick(60) / 1000
