@@ -33,7 +33,7 @@ def main():
         # Player character
         player.update(dt)
         player.draw(screen)
-        # Refresh screen, wait on clock
+        # Refresh screen, wait on clock, setting FPS limit
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
