@@ -56,7 +56,7 @@ def main():
             # Check for Asteroid destruction
             for s in shots:
                 if s.check_collision(a):
-                    a.kill()
+                    a.split()
                     s.kill()
             # Check for Player death
             if a.check_collision(player):
