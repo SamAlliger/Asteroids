@@ -53,9 +53,16 @@ def main():
         for u in updateable:
             u.update(dt)
         for a in asteroids:
+            # Check for Asteroid destruction
+            for s in shots:
+                if s.check_collision(a):
+                    a.kill()
+                    s.kill()
+            # Check for Player death
             if a.check_collision(player):
                 print("Game over!")
                 sys.exit()
+            
         # Drawing at new positions
         for d in drawable:
             d.draw(screen)
