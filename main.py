@@ -31,6 +31,7 @@ def main():
         # Black background
         screen.fill(color="black", rect=None, special_flags=0)
         # Player character
+        player.update(dt)
         player.draw(screen)
         # Refresh screen, wait on clock
         pygame.display.flip()
